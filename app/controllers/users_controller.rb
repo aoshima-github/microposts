@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   
   def show #追加
   @user = User.find(params[:id])
-end
+  @microposts = @user.microposts.order(created_at :desc)
+  end
   
   def new
     @user = User.new
@@ -16,7 +17,7 @@ end
     else
       render 'new'
     end
-end
+  end
 
   private
   
